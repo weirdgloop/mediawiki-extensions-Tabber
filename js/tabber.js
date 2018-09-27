@@ -8,7 +8,7 @@
 				loc;
 
 			tabContent.each(function() {
-				var anchor = $('<a>').text(this.title).attr('title', this.title).attr('href', '#');
+				var anchor = $('<a>').text(this.alt).attr('alt', this.alt).attr('href', '#');
 				$('<li>').append(anchor).appendTo(nav);
 
 				// Append a manual word break point after each tab
@@ -28,7 +28,7 @@
 				tabContent.hide();
 				content.show();
 				nav.find('.tabberactive').removeClass('tabberactive');
-				nav.find('a[title="' + title + '"]').parent().addClass('tabberactive');
+				nav.find('a[alt="' + title + '"]').parent().addClass('tabberactive');
 				return true;
 			}
 
@@ -40,7 +40,7 @@
 
 			// Respond to clicks on the nav tabs
 			nav.on('click', 'a', function(e) {
-				var title = $(this).attr('title');
+				var title = $(this).attr('alt');
 				e.preventDefault();
 				if (history.pushState) {
 					history.pushState(null, null, '#' + encodeURIComponent(title));
@@ -59,7 +59,7 @@
 				if (!tab.length) {
 					showContent(tabContent.first().attr('title'));
 				}
-				if (nav.find('a[title="'+tab+'"]').length) {
+				if (nav.find('a[alt="'+tab+'"]').length) {
 					showContent(tab);
 				}
 			}
