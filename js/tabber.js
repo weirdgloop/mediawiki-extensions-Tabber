@@ -8,7 +8,7 @@
 				loc;
 
 			tabContent.each(function() {
-				var anchor = $('<a>').text(this.alt).attr('alt', this.alt).attr('href', '#');
+				var anchor = $('<a>').text(this.title).attr('alt', this.title).attr('href', '#');
 				$('<li>').append(anchor).appendTo(nav);
 
 				// Append a manual word break point after each tab
