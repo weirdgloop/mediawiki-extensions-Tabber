@@ -36,7 +36,7 @@
 			// setup initial state
 			var tab = decodeURI(location.hash.replace('#', ''));
 			if (tab === '' || !showContent(tab)) {
-				showContent(tabContent.first().attr('title'));
+				showContent(tabContent.first().data('title'));
 			}
 
 			// Respond to clicks on the nav tabs
