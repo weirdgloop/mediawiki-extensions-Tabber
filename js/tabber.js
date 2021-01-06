@@ -8,7 +8,8 @@
 				loc;
 
 			tabContent.each(function() {
-				var anchor = $('<a>').text(this.title).attr('alt', this.title).attr('href', '#');
+				var title = $(this).data('title')
+				var anchor = $('<a>').text(title).attr('alt', title).attr('href', '#');
 				$('<li>').append(anchor).appendTo(nav);
 
 				// Append a manual word break point after each tab
@@ -23,7 +24,7 @@
 			 * @return {bool} true if matching tab could be shown
 			 */
 			function showContent(title) {
-				var content = tabContent.filter('[title="' + title + '"]');
+				var content = tabContent.filter('[data-title="' + title + '"]');
 				if (content.length !== 1) { return false; }
 				tabContent.hide();
 				content.show();
@@ -57,7 +58,7 @@
 			function switchTab(event) {
 				var tab = decodeURIComponent(location.hash.replace('#', ''));
 				if (!tab.length) {
-					showContent(tabContent.first().attr('title'));
+					showContent(tabContent.first().data('title'));
 				}
 				if (nav.find('a[alt="'+tab+'"]').length) {
 					showContent(tab);
