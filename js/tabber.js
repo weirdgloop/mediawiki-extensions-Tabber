@@ -44,8 +44,8 @@
 			nav.on('click', 'a', function(e) {
 				var title = $(this).attr('data-hash');
 				e.preventDefault();
-				if (history.pushState) {
-					history.pushState(null, null, '#' + title);
+				if (history.replaceState) {
+					history.replaceState(null, null, '#' + title);
 					switchTab();
 				} else {
 					location.hash = '#' + title;
