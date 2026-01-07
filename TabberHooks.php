@@ -11,8 +11,8 @@
 
 namespace Tabber;
 
-use Parser;
-use PPFrame;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
 
 class TabberHooks {
 	/**
