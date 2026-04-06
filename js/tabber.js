@@ -71,6 +71,6 @@
 	};
 }(jQuery));
 
-$(function() {
-	$('.tabber').tabber();
+mw.hook('wikipage.content').add( () => {
+	$('.tabber:not(.tabberlive)').tabber();
 });
