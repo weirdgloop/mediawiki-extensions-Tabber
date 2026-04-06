@@ -57,12 +57,20 @@
 			});
 
 			function switchTab() {
-				var tab = new mw.Uri(location.href).fragment;
-				if (!tab.length) {
+				var hash = new mw.Uri(location.href).fragment;
+				if (!hash.length) {
 					showContent(tabContent.first().attr('data-hash'));
 				}
-				if (nav.find('a[data-hash="'+tab+'"]').length) {
-					showContent(tab);
+				if (nav.find('a[data-hash="'+hash+'"]').length) {
+					showContent(hash);
+				}
+				// Check if the target element is inside a tabber and switch to it
+				const target = document.getElementById(hash);
+				if (target !== null) {
+					const parentTab = target.closest('.tabbertab');
+					if (parentTab !== null) {
+						showContent($(parentTab).attr('data-hash'));
+					}
 				}
 			}
 
