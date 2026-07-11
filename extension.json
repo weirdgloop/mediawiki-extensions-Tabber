@@ -47,12 +47,8 @@
 			"Tabber\\TabberHooks::onParserFirstCallInit"
 		]
 	},
-	"attributes": {
-		"CodeMirror": {
-			"TagModes": {
-				"tabber": "text/mediawiki"
-			}
-		}
+	"CodeMirrorTagModes": {
+		"tabber": "text/mediawiki"
 	},
 	"manifest_version": 1
 }
