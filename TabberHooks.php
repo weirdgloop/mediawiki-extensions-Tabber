@@ -72,6 +72,7 @@ class TabberHooks {
 		list($tabName, $tabBody) = array_pad(explode('=', $tab, 2), 2, '');
 
 		$tabBody = $parser->recursiveTagParse($tabBody, $frame);
+		$tabName = $parser->getTargetLanguageConverter()->convert($tabName);
 
 		$tab = '
 			<div class="tabbertab" data-title="' . htmlspecialchars($tabName) . '">
