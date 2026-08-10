@@ -26,6 +26,3 @@ Render basic tabber
 				<p><a href="/index.php?title=Template:SomeTemplate&amp;action=edit&amp;redlink=1" class="new" title="Template:SomeTemplate (page does not exist)">Template:SomeTemplate</a></p>
 			</div></div>
 !! end
-
-!! test
-Render a tabber with
