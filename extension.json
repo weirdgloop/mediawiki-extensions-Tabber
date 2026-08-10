@@ -14,7 +14,7 @@
 	},
 	"MessagesDirs": {
 		"Tabber": [
-			"/i18n"
+			"i18n"
 		]
 	},
 	"AutoloadClasses": {
