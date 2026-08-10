@@ -77,4 +77,5 @@ jobs:
         run: composer run phan
 
       - name: Run parser tests
-        run: php tests/parser/parserTests.php --file=extensions/Tabber/tests/parser/parserTests.txt
+        run: php tests/parser/parserTests.php --dir=extensions/Tabber/tests/parser/
+        working-directory: mediawiki

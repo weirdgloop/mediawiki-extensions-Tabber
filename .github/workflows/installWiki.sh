@@ -11,9 +11,11 @@ cd mediawiki
 
 composer install
 
-# Temporarily commented out since we don't run any unit tests right now
-: <<'COMMENT'
+
 php maintenance/install.php --dbtype sqlite --dbuser root --dbname mw --dbpath $(pwd) --pass AdminPassword WikiName AdminUser
+
+# Required on 1.45 for some reason
+echo '$wgServer = "http://127.0.0.1";' >> LocalSettings.php
 
 # echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 # echo 'ini_set("display_errors", 1);' >> LocalSettings.php
@@ -41,4 +43,3 @@ EOT
 # Taken from https://github.com/StarCitizenTools/mediawiki-ci-workflows/blob/main/.github/workflows/test-php.yml
 wget "https://raw.githubusercontent.com/wikimedia/mediawiki/${MW_BRANCH}/phpunit.xml.dist" -nv || \
   wget "https://raw.githubusercontent.com/wikimedia/mediawiki/${MW_BRANCH}/phpunit.xml.template" -nv
-COMMENT
