@@ -75,3 +75,6 @@ jobs:
       - name: Run phan
         working-directory: mediawiki/extensions/Tabber
         run: composer run phan
+
+      - name: Run parser tests
+        run: php tests/parser/parserTests.php --file=extensions/Tabber/tests/parser/parserTests.txt
