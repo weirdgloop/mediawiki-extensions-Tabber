@@ -31,7 +31,7 @@ class TabberHooks {
 	/**
 	 * Renders the necessary HTML for a <tabber> tag.
 	 *
-	 * @param string $input The input URL between the beginning and ending tags.
+	 * @param string|null $input The input URL between the beginning and ending tags.
 	 * @param array $args Array of attribute arguments on that beginning tag.
 	 * @param Parser $parser Mediawiki Parser Object
 	 * @param PPFrame $frame Mediawiki PPFrame Object
@@ -41,8 +41,8 @@ class TabberHooks {
 	public static function renderTabber( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$parser->getOutput()->addModules( [ 'ext.Tabber' ] );
 
-		$key = md5( $input );
-		$arr = explode( "|-|", $input );
+		$key = md5( $input ?? '' );
+		$arr = explode( "|-|", $input ?? '' );
 		$htmlTabs = '';
 		foreach ( $arr as $tab ) {
 			$htmlTabs .= self::buildTab( $tab, $parser, $frame );
@@ -72,6 +72,7 @@ class TabberHooks {
 		[ $tabName, $tabBody ] = array_pad( explode( '=', $tab, 2 ), 2, '' );
 
 		$tabBody = $parser->recursiveTagParse( $tabBody, $frame );
+		$tabName = $parser->getTargetLanguageConverter()->convert( $tabName );
 
 		$tab = '
 			<div class="tabbertab" data-title="' . htmlspecialchars( $tabName ) . '">

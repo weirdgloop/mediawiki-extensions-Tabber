@@ -1,0 +1,42 @@
+!! options
+version=2
+parsoid-compatible=wt2html
+!! end
+
+!! test
+tabber tab names undergo language conversion
+!! options
+language=sr htmlVariantLanguage=sr-Cyrl
+!! wikitext
+<tabber>
+ abvg=foo
+|-|
+ tab2= bar
+</tabber>
+!! html/php
+<div id="tabber-05038e1bc8a74424aadeb78b75452292" class="tabber">
+			<div class="tabbertab" data-title="абвг">
+				<p>фоо</p>
+			</div>
+			<div class="tabbertab" data-title="таб2">
+				<p> бар</p>
+			</div></div>
+!! html/parsoid
+<div class="tabber" data-mw='{"name":"tabber","attrs":{},"body":{"extsrc":"\n abvg=foo\n|-|\n tab2= bar\n"}}' id="tabber-05038e1bc8a74424aadeb78b75452292" typeof="mw:Extension/tabber">
+<div class="tabbertab" data-title="абвг">
+<p>foo</p>
+</div>
+<div class="tabbertab" data-title="таб2">
+<p>bar</p>
+</div>
+</div>
+!! html/parsoid+langconv
+<div class="tabber" data-mw='{"name":"tabber","attrs":{},"body":{"extsrc":"\n abvg=foo\n|-|\n tab2= bar\n"}}' id="tabber-05038e1bc8a74424aadeb78b75452292" typeof="mw:Extension/tabber">
+<div class="tabbertab" data-title="абвг">
+<p>фоо</p>
+</div>
+<div class="tabbertab" data-title="таб2">
+<p>бар</p>
+</div>
+</div>
+!! end
