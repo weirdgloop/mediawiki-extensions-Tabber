@@ -1,0 +1,28 @@
+!! options
+version=2
+!! end
+
+!! test
+Render basic tabber
+!! wikitext
+<tabber>
+ tab1=Test content 1
+|-|
+ tab2=
+ Test content 2 (''parsed'')
+|-|
+ tab3={{Template:SomeTemplate}}
+</tabber>
+!! html
+<div id="tabber-5f1ef3d9cc0bb3fab07846b7b7678cf1" class="tabber">
+			<div class="tabbertab" data-title="tab1">
+				<p>Test content 1</p>
+			</div>
+			<div class="tabbertab" data-title="tab2">
+				<p>
+ Test content 2 (<i>parsed</i>)</p>
+			</div>
+			<div class="tabbertab" data-title="tab3">
+				<p><a href="/index.php?title=Template:SomeTemplate&amp;action=edit&amp;redlink=1" class="new" title="Template:SomeTemplate (page does not exist)">Template:SomeTemplate</a></p>
+			</div></div>
+!! end
